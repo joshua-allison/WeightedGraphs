@@ -8,15 +8,9 @@ namespace WGraphClasses
 {
     public class WGraph
     {
-        //private members
-        WeightedGraph<char> graph;
+        private WeightedGraph<char> graph;
 
-        //public members
-
-        //private methods
-
-        //public methods:
-        public WGraph(int? size = 0) => graph = new WeightedGraph<char>( size is null ? 0 : (int)size);
+        public WGraph(int? size = 0) => graph = new WeightedGraph<char>(size is null ? 0 : (int)size);
 
         public void AddNode(char name) => graph.AddNode(name);
 

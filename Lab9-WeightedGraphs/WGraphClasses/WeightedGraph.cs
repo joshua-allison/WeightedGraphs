@@ -161,7 +161,6 @@ namespace WGraphClasses
                 if (!buffer.Contains(nodeName))
                     buffer += nodeName + " ";
 
-
             return buffer;
         }
 
@@ -178,8 +177,12 @@ namespace WGraphClasses
 
             while (!DFSComplete)
             {
+                /// This implementation of a DFS does not feel optimal
+                /// By that, I mean I feel it can be done in fewer steps.
+                /// This does work though, and it only really starts getting inefficient when the nodes have increasing numbers of edges.
+                /// The way it works is by first checking all the edges of node,
+                /// If all of them are visited then the DFS is over.
                 numVisited = 0;
-                // if all the edges are visited, we're done. 
                 foreach (var item in node.Edges)
                     if (item.Adjacent.Visited)
                         numVisited++;
@@ -198,9 +201,16 @@ namespace WGraphClasses
                         }
                     } 
                 }
-
             }
 
+            // special case: unreached nodes
+            buffer += "Unreached Node(s): ";
+            string allNodes = "";
+            foreach (Node<T> item in NodeList)
+                allNodes += item;
+            foreach (var nodeName in allNodes)
+                if (!buffer.Contains(nodeName))
+                    buffer += nodeName + " ";
 
             return buffer;
         }
