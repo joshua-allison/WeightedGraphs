@@ -5,6 +5,8 @@ VisualStudioVersion = 17.2.32519.379
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeightedGraphs", "WeightedGraphs\WeightedGraphs.csproj", "{7AA3AB69-C324-4519-97A8-D515704583B4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WGraphClasses", "WGraphClasses\WGraphClasses.csproj", "{58E503F0-72A2-463F-B96F-6B2048512462}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{7AA3AB69-C324-4519-97A8-D515704583B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7AA3AB69-C324-4519-97A8-D515704583B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7AA3AB69-C324-4519-97A8-D515704583B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58E503F0-72A2-463F-B96F-6B2048512462}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58E503F0-72A2-463F-B96F-6B2048512462}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58E503F0-72A2-463F-B96F-6B2048512462}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58E503F0-72A2-463F-B96F-6B2048512462}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

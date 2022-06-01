@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace WGraphClasses
 {
-    /// <summary> "The object used to represent a node." </summary>
-    /// <accreditation> This class is from "CS 260 - Graphs" by Jim Bailey</accreditation>
+    /// <summary>The object used to represent a node.</summary>
     public class Node<T>
     {
         public Node(T name)
@@ -17,9 +16,20 @@ namespace WGraphClasses
                 throw new ArgumentNullException("name");
             }
             Name = name;
+            Visited = false;
+            Edges = null;
         }
-        public T Name { get; set; } //
-        public LinkedList<Edge>? Edges { get; set; } // the list of connections with their associated weights
+        
+        public void AddEdge(Edge<T> edge) 
+        {
+            if (edge == null)
+                throw new ArgumentNullException("edge");
+            if (Edges == null)
+                Edges = new LinkedList<Edge<T>>();
+            Edges.AddFirst(edge);
+        }
+        public T Name { get; set; } // the name of the node
+        public LinkedList<Edge<T>>? Edges { get; set; } // the list of connections with their associated weights
         public bool Visited { get; set; } // (for graph traversal)
         public override string ToString() => Name.ToString(); // override the ToString method as the name of the node for easy debugging and programming
     }

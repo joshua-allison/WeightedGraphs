@@ -9,44 +9,31 @@ namespace WGraphClasses
     public class WGraph
     {
         //private members
-        const int SIZE = 20; // the default size of the graph
-        private int Count; // the number of vertices in the graph
-        private List<Node<char>> NodeList; // the list of vertices in the graph
-        private int[,] EdgeMatrix; // the edge matrix of the weighted graph
+        WeightedGraph<char> graph;
 
         //public members
 
         //private methods
 
         //public methods:
-        public WGraph() =>
-            throw new NotImplementedException();
-        
-        public void AddNode() =>
-            throw new NotImplementedException();
+        public WGraph(int? size = 0) => graph = new WeightedGraph<char>( size is null ? 0 : (int)size);
 
-        public void AddEdge() =>
-            throw new NotImplementedException();
+        public void AddNode(char name) => graph.AddNode(name);
 
-        public void ListNodes() =>
-            throw new NotImplementedException();
+        public void AddEdge(char name1, char name2, int weight) => graph.AddEdge(name1, name2, weight);
 
-        public void DisplayAdjacency() =>
-            throw new NotImplementedException();
+        public string ListNodes() => graph.ListNodes();
 
-        public void DisplayMatrix() =>
-            throw new NotImplementedException();
+        public string DisplayAdjacency() => graph.DisplayAdjacency();
 
-        public void BreadthFirst() =>
-            throw new NotImplementedException();
+        public string DisplayMatrix() => graph.DisplayMatrix();
 
-        public void DepthFirst() =>
-            throw new NotImplementedException();
+        public string BreadthFirst(char name) => graph.BreadthFirst(name);
 
-        public void MinCostTree() =>
-            throw new NotImplementedException();
+        public string DepthFirst(char name) => graph.DepthFirst(name);
 
-        public void MinCostPaths() =>
-            throw new NotImplementedException();
+        public string MinCostTree(char name) => graph.MinCostTree(name);
+
+        public string MinCostPaths(char name) => graph.MinCostPaths(name);
     }
 }
