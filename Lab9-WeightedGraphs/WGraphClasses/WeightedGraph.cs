@@ -141,11 +141,11 @@ namespace WGraphClasses
                 foreach(var item in node.Edges)
                 {
                     // if the node on the edge is unvisited...
-                    if (item.Node2.Visited is false)
+                    if (item.Adjacent.Visited is false)
                     {
                         // mark it as visited then add it to the Q.
-                        item.Node2.Visited = true;
-                        Q.Enqueue(item.Node2);
+                        item.Adjacent.Visited = true;
+                        Q.Enqueue(item.Adjacent);
                     }
                 }
                 // After every edge node of node has been evaluated, add Q.Dequeue to the buffer.
@@ -170,45 +170,36 @@ namespace WGraphClasses
             ResetVisited();
             Stack <Node<T>> stack = new();
             Node<T> node = GetNode(name);
-            Node<T> nextAdjacent = node;
-            Edge<T> nextEdge;
             stack.Push(node);
             node.Visited = true;
             string buffer = node + " ";
-            bool allVisited = false;
+            int numVisited;
+            bool DFSComplete = false;
 
-            //while (node is not null)
-            //{
-            for (int i = FindIndex(node.Name); i > -1 ; i--)
+            while (!DFSComplete)
             {
-                node = NodeList[i];
-                for (int j = 0; j < node.Edges.Count; j++)
+                numVisited = 0;
+                // if all the edges are visited, we're done. 
+                foreach (var item in node.Edges)
+                    if (item.Adjacent.Visited)
+                        numVisited++;
+                if (numVisited == node.Edges.Count)
+                    DFSComplete = true;
+                else
                 {
-                    nextEdge = node.Edges.First();
-                    if (nextEdge.Node2.Visited)
-                        nextEdge = nextEdge.Node2.Edges.First();
-                    else
-                        nextAdjacent = nextEdge.Node2;
+                    foreach (var item in node.Edges)
+                    {
+                        if (item.Adjacent.Visited == false)
+                        {
+                            buffer += item.Adjacent + " ";
+                            item.Adjacent.Visited = true;
+                            node = item.Adjacent;
+                            break;
+                        }
+                    } 
                 }
-                if (!nextAdjacent.Visited)
-                {
-                    stack.Push(nextAdjacent);
-                    nextAdjacent.Visited = true;
-                    i = FindIndex(nextAdjacent.Name) +1;
-                }
+
             }
-            //    foreach (var item in node.Edges)
-            //    {
-            //        if (item.Node2.Visited == false)
-            //        {
-            //            stack.Push(item.Node2);
-            //            item.Node2.Visited = true;
-            //            node = item.Node2;
-            //            allVisited = false;
-            //            break;
-            //        }
-            //    }
-            //}
 
 
             return buffer;
